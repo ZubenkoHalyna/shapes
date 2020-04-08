@@ -8,31 +8,36 @@ public class Main {
             Color color = Color.values()[random.nextInt(Color.values().length)];
             switch (random.nextInt(4)) {
                 case 0:
-                    new Circle(random.nextInt(1000) / 100.0, color)
+                    new Circle(getRandomLength(random), color)
                             .paint();
                     break;
                 case 1:
-                    new Square(random.nextInt(1000) / 100.0, color)
+                    new Square(getRandomLength(random), color)
                             .paint();
                     break;
                 case 2:
                     new Trapeze.TrapezeBuilder()
-                            .setFirstBaseWidth(random.nextInt(1000) / 100.0 + 1)
-                            .setSecondBaseWidth(random.nextInt(1000) / 100.0 + 1)
+                            .setFirstBaseWidth(getRandomLength(random))
+                            .setSecondBaseWidth(getRandomLength(random))
                             .setLeftAngle(random.nextInt(71) + 20)
                             .setRightAngle(random.nextInt(71) + 20)
-                            .setColor(color).build()
+                            .setColor(color)
+                            .build()
                             .paint();
                     break;
                 default:
                     new Triangle.TriangleBuilder()
-                            .setFirstSideLength(random.nextInt(1000) / 100.0 + 1)
-                            .setSecondSideLength(random.nextInt(1000) / 100.0 + 1)
+                            .setFirstSideLength(getRandomLength(random))
+                            .setSecondSideLength(getRandomLength(random))
                             .setAngle(random.nextInt(140) + 20)
                             .setColor(color)
                             .build()
                             .paint();
             }
         }
+    }
+
+    private static double getRandomLength(Random random) {
+        return random.nextInt(1000) / 100.0 + 1;
     }
 }
